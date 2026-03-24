@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฟอร์ม PLC - ศูนย์การศึกษาพิเศษหนองคาย</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        .header h2 { margin: 5px 0; font-size: 20px; }
+
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 12px;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        .input-dotted {
+            border: none;
+            border-bottom: 1px dotted #666;
+            width: 100%;
+            padding: 2px 5px;
+            font-family: 'Sarabun', sans-serif;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .checkbox-container {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            display: flex;
+        }
+
+        .footer-sign {
+            margin-top: 40px;
+            text-align: center;
+            float: right;
+            width: 350px;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .container { box-shadow: none; width: 100%; max-width: none; }
+            button { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>การประชุมกิจกรรมชุมชนการเรียนรู้ทางวิชาชีพ</h2>
+        <p>(Professional Learning Community : PLC) ครั้งที่ <input type="text" style="width: 40px;" class="input-dotted"> / 2568</p>
+        <p>วันที่ <input type="text" style="width: 200px;" class="input-dotted"> เวลาเริ่ม 15.30 น. เวลาสิ้นสุด 16.30 น.</p>
+        <h3>ศูนย์การศึกษาพิเศษ ประจำจังหวัดหนองคาย</h3>
+        <p>ครูผู้รับผิดชอบ <input type="text" style="width: 250px;" class="input-dotted"> ตำแหน่ง <input type="text" style="width: 200px;" class="input-dotted"></p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="50%">ปัญหาที่ต้องการพัฒนา</th>
+                <th width="50%">สาเหตุของปัญหาและการพัฒนา</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    ชื่อ <input type="text" class="input-dotted" style="width: 85%;"><br><br>
+                    อายุ <input type="text" class="input-dotted" style="width: 15%;"> ปี 
+                    ห้องเรียน <input type="text" class="input-dotted" style="width: 45%;"><br><br>
+                    ความบกพร่อง <input type="text" class="input-dotted" style="width: 75%;"><br><br>
+                    การจดทะเบียนคนพิการ: 
+                    <label class="checkbox-container"><input type="checkbox"> จดแล้ว</label>
+                    <label class="checkbox-container"><input type="checkbox"> ไม่ได้จด</label>
+                    
+                    <p><strong>พัฒนาการปัจจุบัน</strong></p>
+                    <div class="list-item">1. <input type="text" class="input-dotted"></div>
+                    <div class="list-item">2. <input type="text" class="input-dotted"></div>
+                    <div class="list-item">3. <input type="text" class="input-dotted"></div>
+                    <div class="list-item">4. <input type="text" class="input-dotted"></div>
+                    <div class="list-item">5. <input type="text" class="input-dotted"></div>
+                    
+                    <p><strong>ปัญหา/พฤติกรรม</strong></p>
+                    <div class="list-item">1. <input type="text" class="input-dotted"></div>
+                    <div class="list-item">2. <input type="text" class="input-dotted"></div>
+                    <div class="list-item">3. <input type="text" class="input-dotted"></div>
+                    
+                    <p><strong>สิ่งที่ต้องการพัฒนา</strong></p>
+                    <textarea class="input-dotted" rows="4" style="resize: none;"></textarea>
+                </td>
+                <td>
+                    <strong>การได้รับทุนการศึกษา/ระบบดูแลช่วยเหลือผู้เรียน</strong><br>
+                    <label class="checkbox-container"><input type="checkbox"> ไม่ได้รับทุน</label>
+                    <label class="checkbox-container"><input type="checkbox"> ได้รับทุน</label>
+                    <input type="text" class="input-dotted" style="width: 40%;"><br><br>
+
+                    <strong>การวิเคราะห์ปัญหาการเลี้ยงดู/ครอบครัว</strong><br>
+                    <textarea class="input-dotted" rows="3" style="resize: none;"></textarea><br><br>
+
+                    <strong>การวิเคราะห์ปัญหาอื่นๆ</strong><br>
+                    <textarea class="input-dotted" rows="3" style="resize: none;"></textarea><br><br>
+
+                    <strong>การวิเคราะห์ข้อมูลนักวิชาชีพ (ครู หมอ พ่อแม่)</strong><br>
+                    <textarea class="input-dotted" rows="3" style="resize: none;"></textarea><br><br>
+
+                    <strong>ชื่อเรื่องประเด็นท้าทาย</strong><br>
+                    <textarea class="input-dotted" rows="5" style="resize: none;"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <strong>ผู้บันทึกนำไปปรับใช้</strong><br>
+                    <textarea class="input-dotted" rows="4" style="resize: none;"></textarea>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer-sign">
+        ลงชื่อ <input type="text" class="input-dotted" style="width: 200px;"><br>
+        (<input type="text" class="input-dotted" style="width: 200px;">)<br>
+        ตำแหน่ง <input type="text" class="input-dotted" style="width: 180px;"><br>
+        <strong>ผู้บันทึก</strong>
+    </div>
+
+    <div style="clear: both;"></div>
+    
+    <div style="text-align: center; margin-top: 30px;">
+        <button onclick="window.print()" style="padding: 10px 20px; cursor: pointer; background: #2ecc71; color: white; border: none; border-radius: 5px;">พิมพ์แบบฟอร์ม (PDF)</button>
+    </div>
+</div>
+
+</body>
+</html>

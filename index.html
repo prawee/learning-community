@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบฟอร์มบันทึกกิจกรรม PLC</title>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        .input-line {
+            border-bottom: 1px dotted #000;
+            display: inline-block;
+            min-width: 150px;
+            margin-bottom: 5px;
+        }
+        .checkbox-group {
+            margin: 10px 0;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            float: right;
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h3>การประชุมกิจกรรมชุมชนการเรียนรู้ทางวิชาชีพ</h3>
+        <p>(Professional Learning Community : PLC) ครั้งที่ ...../2568</p>
+        <p>วันที่..........................................................เวลาเริ่ม 15.30 น. เวลาสิ้นสุด 16.30 น.</p>
+        <p><strong>ศูนย์การศึกษาพิเศษ ประจำจังหวัดหนองคาย</strong></p>
+        <p>ครูผู้รับผิดชอบ <span class="input-line" style="width: 300px;"></span> ตำแหน่ง <span class="input-line" style="width: 200px;"></span></p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="50%">ปัญหาที่ต้องการพัฒนา</th>
+                <th width="50%">สาเหตุของปัญหาและการพัฒนา</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    ชื่อ <span class="input-line" style="width: 80%;"></span><br>
+                    อายุ <span class="input-line" style="width: 20%;"></span> ปี ห้องเรียน <span class="input-line" style="width: 40%;"></span><br>
+                    ความบกพร่อง <span class="input-line" style="width: 70%;"></span><br>
+                    การจดทะเบียนคนพิการ 
+                    <input type="checkbox"> จดแล้ว 
+                    <input type="checkbox"> ไม่ได้จด<br>
+                    <strong>พัฒนาการปัจจุบัน</strong><br>
+                    1. ........................................................................<br>
+                    2. ........................................................................<br>
+                    3. ........................................................................<br>
+                    4. ........................................................................<br>
+                    5. ........................................................................<br>
+                    <strong>ปัญหา/พฤติกรรม</strong><br>
+                    1. ........................................................................<br>
+                    2. ........................................................................<br>
+                    3. ........................................................................<br>
+                    <strong>สิ่งที่ต้องการพัฒนา</strong><br>
+                    <div style="height: 100px; border-bottom: 1px dotted black;"></div>
+                </td>
+                <td>
+                    <strong>การได้รับทุนการศึกษา/ระบบดูแลช่วยเหลือผู้เรียน</strong><br>
+                    <input type="checkbox"> ไม่ได้รับทุน <input type="checkbox"> ได้รับทุน.......................<br><br>
+                    <strong>การวิเคราะห์ปัญหาการเลี้ยงดู/ครอบครัว</strong><br>
+                    <div style="height: 60px; border-bottom: 1px dotted black;"></div><br>
+                    <strong>การวิเคราะห์ปัญหาอื่นๆ</strong><br>
+                    <div style="height: 60px; border-bottom: 1px dotted black;"></div><br>
+                    <strong>การวิเคราะห์ข้อมูลนักวิชาชีพ (ครู หมอ พ่อแม่)</strong><br>
+                    <div style="height: 60px; border-bottom: 1px dotted black;"></div><br>
+                    <strong>ชื่อเรื่องประเด็นท้าทาย</strong><br>
+                    <div style="height: 100px; border-bottom: 1px dotted black;"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <strong>ผู้บันทึกนำไปปรับใช้</strong><br>
+                    <div style="height: 80px;"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        ลงชื่อ..........................................................<br>
+        (..........................................................)<br>
+        ตำแหน่ง..........................................................<br>
+        <strong>ผู้บันทึก</strong>
+    </div>
+
+</body>
+</html>
