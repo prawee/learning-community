@@ -10,56 +10,63 @@
         /* ตั้งค่าหน้ากระดาษ A4 */
         @page {
             size: A4;
-            margin: 1cm;
+            margin: 0;
+            /* ให้ระยะขอบเป็น 0 แล้วใช้ padding ใน container แทน เพื่อความคุมได้แม่นยำ */
         }
 
         body {
             font-family: 'Sarabun', sans-serif;
             background-color: #f0f0f0;
             margin: 0;
-            padding: 20px;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
         }
 
         .container {
             width: 210mm;
-            /* ขนาด A4 */
-            min-height: 297mm;
-            margin: 0 auto;
+            height: 297mm;
+            /* บังคับความสูงเต็ม A4 */
             background: white;
-            padding: 1cm; /* ลดจาก 1.5cm */
+            padding: 1.5cm;
+            /* ระยะขอบกระดาษด้านใน */
             box-sizing: border-box;
             position: relative;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 5px; /* ลดจาก 15px */
+            margin-bottom: 20px;
         }
 
         .header h3 {
-            margin: 2px 0; /* ลดระยะห่าง */
-            font-size: 16px; /* ลดจาก 18px */
+            margin: 5px 0;
+            font-size: 18px;
         }
 
         .header p {
-            margin: 2px 0;
-            font-size: 14px;
+            margin: 4px 0;
+            font-size: 15px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             table-layout: fixed;
+            flex-grow: 1;
+            /* ให้ตารางขยายตัวเพื่อเติมเต็มพื้นที่ */
         }
 
         th,
         td {
             border: 1px solid black;
-            padding: 5px; /* ลดจาก 8px */
+            padding: 8px;
             vertical-align: top;
             word-wrap: break-word;
-            font-size: 14px; /* ลดขนาดฟอนต์ในตาราง */
+            font-size: 15px;
         }
 
         th {
@@ -72,7 +79,7 @@
             border: none;
             border-bottom: 1px dotted #000;
             font-family: 'Sarabun', sans-serif;
-            font-size: 14px; /* ลดขนาดฟอนต์ */
+            font-size: 14px;
             width: 100%;
             outline: none;
             background: transparent;
@@ -80,27 +87,29 @@
 
         textarea {
             border-bottom: none;
-            line-height: 1.4; /* ลดจาก 1.8 */
+            line-height: 1.4;
             background-image: radial-gradient(#000 10%, transparent 10%);
-            background-position: 0 1.3em;
-            background-size: 100% 1.4em;
+            background-position: 0 1.5em;
+            background-size: 100% 1.6em;
             background-repeat: repeat-y;
-            resize: none; /* ห้ามขยายช่อง */
+            resize: none;
         }
 
         .footer-section {
-            margin-top: 10px; /* ลดจาก 30px */
-            float: right;
-            width: 250px;
+            margin-top: 20px;
+            align-self: flex-end;
+            /* จัดชิดขวาด้านล่าง */
+            width: 300px;
             text-align: center;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         /* ปุ่มควบคุม */
         .controls {
             position: fixed;
             top: 20px;
-            right: 20px;
+            left: calc(50% + 110mm);
+            /* วางข้างๆ กระดาษ */
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -108,13 +117,15 @@
         }
 
         .btn {
-            padding: 8px 15px;
+            padding: 12px 20px;
             cursor: pointer;
             border: none;
             border-radius: 5px;
             color: white;
             font-weight: bold;
             font-size: 14px;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .btn-save {
@@ -127,23 +138,20 @@
 
         /* การตั้งค่าเมื่อพิมพ์ PDF */
         @media print {
-            @page {
-                size: A4;
-                margin: 0.5cm;
-            }
-
             body {
                 background: none;
                 padding: 0;
+                display: block;
             }
 
             .container {
                 margin: 0;
                 box-shadow: none;
-                width: 100% !important;
-                height: 100% !important;
-                padding: 0.5cm;
-                min-height: auto;
+                width: 210mm;
+                height: 297mm;
+                padding: 1.5cm;
+                /* ป้องกันการขึ้นหน้าใหม่ถ้ามีขอบเล็กน้อย */
+                page-break-after: avoid;
             }
 
             .controls {
@@ -160,20 +168,20 @@
 <body>
 
     <div class="controls">
-        <button class="btn btn-save" onclick="saveData()">💾 บันทึกข้อมูลลงเครื่อง</button>
-        <button class="btn btn-print" onclick="window.print()">🖨️ ออกเป็น PDF (A4)</button>
+        <button class="btn btn-save" onclick="saveData()">💾 บันทึกข้อมูล</button>
+        <button class="btn btn-print" onclick="window.print()">🖨️ พิมพ์/เซฟเป็น PDF</button>
     </div>
 
     <div class="container" id="formContents">
         <div class="header">
             <h3>การประชุมกิจกรรมชุมชนการเรียนรู้ทางวิชาชีพ</h3>
-            <p>(Professional Learning Community : PLC) ครั้งที่ <input type="text" id="round" style="width: 30px;"> /
+            <p>(Professional Learning Community : PLC) ครั้งที่ <input type="text" id="round" style="width: 40px;"> /
                 2568</p>
-            <p>วันที่ <input type="text" id="date_str" style="width: 150px;"> เวลาเริ่ม 15.30 น. เวลาสิ้นสุด 16.30 น.
+            <p>วันที่ <input type="text" id="date_str" style="width: 180px;"> เวลาเริ่ม 15.30 น. เวลาสิ้นสุด 16.30 น.
             </p>
             <h3>ศูนย์การศึกษาพิเศษ ประจำจังหวัดหนองคาย</h3>
-            <p>ครูผู้รับผิดชอบ <input type="text" id="teacher" style="width: 200px;"> ตำแหน่ง <input type="text"
-                    id="position" style="width: 150px;"></p>
+            <p>ครูผู้รับผิดชอบ <input type="text" id="teacher" style="width: 250px;"> ตำแหน่ง <input type="text"
+                    id="position" style="width: 180px;"></p>
         </div>
 
         <table>
@@ -184,50 +192,50 @@
             <tr>
                 <td>
                     ชื่อ <input type="text" id="std_name" style="width: 80%;"><br>
-                    อายุ <input type="text" id="age" style="width: 30px;"> ปี ห้องเรียน <input type="text" id="room"
-                        style="width: 100px;"><br>
-                    ความบกพร่อง <input type="text" id="disability" style="width: 65%;"><br>
-                    การจดทะเบียน: <input type="checkbox" id="reg_yes"> จดแล้ว <input type="checkbox" id="reg_no">
+                    อายุ <input type="text" id="age" style="width: 40px;"> ปี ห้องเรียน <input type="text" id="room"
+                        style="width: 120px;"><br>
+                    ความบกพร่อง <input type="text" id="disability" style="width: 70%;"><br>
+                    การจดทะเบียนคนพิการ: <input type="checkbox" id="reg_yes"> จดแล้ว <input type="checkbox" id="reg_no">
                     ไม่ได้จด
-                    <p style="margin: 5px 0 2px 0;"><strong>พัฒนาการปัจจุบัน</strong></p>
+                    <p style="margin: 10px 0 5px 0;"><strong>พัฒนาการปัจจุบัน</strong></p>
                     1. <input type="text" id="dev1"><br>
                     2. <input type="text" id="dev2"><br>
                     3. <input type="text" id="dev3"><br>
                     4. <input type="text" id="dev4"><br>
                     5. <input type="text" id="dev5">
-                    <p style="margin: 5px 0 2px 0;"><strong>ปัญหา/พฤติกรรม</strong></p>
+                    <p style="margin: 10px 0 5px 0;"><strong>ปัญหา/พฤติกรรม</strong></p>
                     1. <input type="text" id="prob1"><br>
                     2. <input type="text" id="prob2"><br>
                     3. <input type="text" id="prob3">
-                    <p style="margin: 5px 0 2px 0;"><strong>สิ่งที่ต้องการพัฒนา</strong></p>
-                    <textarea id="want_dev" rows="3"></textarea>
+                    <p style="margin: 10px 0 5px 0;"><strong>สิ่งที่ต้องการพัฒนา</strong></p>
+                    <textarea id="want_dev" rows="5"></textarea>
                 </td>
                 <td>
                     <strong>การได้รับทุนการศึกษา</strong><br>
                     <input type="checkbox" id="fund_no"> ไม่ได้รับ <input type="checkbox" id="fund_yes"> ได้รับ <input
-                        type="text" id="fund_detail" style="width: 80px;">
-                    <p style="margin: 5px 0 2px 0;"><strong>การวิเคราะห์ปัญหาการเลี้ยงดู</strong></p>
-                    <textarea id="family_analysis" rows="2"></textarea>
-                    <p style="margin: 5px 0 2px 0;"><strong>การวิเคราะห์ปัญหาอื่นๆ</strong></p>
-                    <textarea id="other_analysis" rows="2"></textarea>
-                    <p style="margin: 5px 0 2px 0;"><strong>ข้อมูลนักวิชาชีพ</strong></p>
-                    <textarea id="expert_analysis" rows="2"></textarea>
-                    <p style="margin: 5px 0 2px 0;"><strong>ชื่อเรื่องประเด็นท้าทาย</strong></p>
-                    <textarea id="challenge_name" rows="4"></textarea>
+                        type="text" id="fund_detail" style="width: 100px;">
+                    <p style="margin: 10px 0 5px 0;"><strong>การวิเคราะห์ปัญหาการเลี้ยงดู</strong></p>
+                    <textarea id="family_analysis" rows="3"></textarea>
+                    <p style="margin: 10px 0 5px 0;"><strong>การวิเคราะห์ปัญหาอื่นๆ</strong></p>
+                    <textarea id="other_analysis" rows="3"></textarea>
+                    <p style="margin: 10px 0 5px 0;"><strong>ข้อมูลนักวิชาชีพ (ครู หมอ พ่อแม่)</strong></p>
+                    <textarea id="expert_analysis" rows="3"></textarea>
+                    <p style="margin: 10px 0 5px 0;"><strong>ชื่อเรื่องประเด็นท้าทาย</strong></p>
+                    <textarea id="challenge_name" rows="5"></textarea>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
                     <strong>ผู้บันทึกนำไปปรับใช้</strong><br>
-                    <textarea id="apply_use" rows="2"></textarea>
+                    <textarea id="apply_use" rows="3"></textarea>
                 </td>
             </tr>
         </table>
 
         <div class="footer-section">
-            ลงชื่อ <input type="text" id="sign_name" style="width: 160px;"><br>
-            (<input type="text" id="sign_full" style="width: 160px;">)<br>
-            ตำแหน่ง <input type="text" id="sign_pos" style="width: 140px;"><br>
+            ลงชื่อ <input type="text" id="sign_name" style="width: 180px;"><br>
+            (<input type="text" id="sign_full" style="width: 180px;">)<br>
+            ตำแหน่ง <input type="text" id="sign_pos" style="width: 160px;"><br>
             <strong>ผู้บันทึก</strong>
         </div>
     </div>
