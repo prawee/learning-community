@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: plc-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - "${DATABASE_PORT:-5432}:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    container_name: plc-backend
+    restart: always
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    environment:
+      DATABASE_URL: postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@plc-db:5432/${DATABASE_NAME}
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
